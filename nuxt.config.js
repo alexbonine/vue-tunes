@@ -28,7 +28,7 @@ module.exports = {
     '~/plugins/filters',
   ],
   env: {
-    baseUrl: process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'http://vue.alexbonine.com',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'http://alexbonine.com/vue-tunes',
   },
   build: {
     /*
@@ -56,6 +56,9 @@ module.exports = {
       }
     }
   },
+  router: process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+    base: '/vue-tunes/'
+  } : {},
   // serverMiddleware: [
   //   bodyParser.json(),
   //   session({
